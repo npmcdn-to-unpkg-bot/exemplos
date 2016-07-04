@@ -1,0 +1,17 @@
+.alert {
+	background-color: #f2dede;
+	padding: 20px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	border-radius: 5px;
+}
+
+.alert-title {
+	color: #af4341;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.alert-content{
+	color: #af4341;
+}

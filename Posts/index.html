@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app-post">
+<head>
+	<title>Post</title>
+	<meta charset="utf-8">
+	<script src="lib/jquery/jquery-2.2.3.js"></script>
+	<script src="lib/bootstrap/js/bootstrap.js"></script>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+
+	<!-- Angular Js -->
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular/angular-route.js"></script>
+	<script src="lib/angular/angular-locale_pt-br.js"></script>
+
+	<!-- POSTS -->
+	<script src="js/app.js"></script>
+	<script src="view/post/postsCtrl.js"></script>
+	<script src="view/post/detalhesPostCtrl.js"></script>
+	<script src="view/login/loginCtrl.js"></script>
+	<script src="indexCtrl.js"></script>
+
+	<script src="view/post/postsService.js"></script>
+	<script src="view/post/comentarioService.js"></script>
+	<script src="view/login/loginService.js"></script>
+
+	<link rel="stylesheet" href="view/post/posts.css">
+
+	<script src="js/config/route-config.js"></script>
+	<script src="lib/dirPagination.js"></script>
+</head>
+<body>
+	<div ng-controller="indexCtrl">
+		<div id="header">
+			<div style="float: right;">Olá
+				{{nomeUsuarioLogado}}!</div>
+		</div>
+		
+	</div>
+	<div ng-view>
+	</div>
+</body>
+</html>

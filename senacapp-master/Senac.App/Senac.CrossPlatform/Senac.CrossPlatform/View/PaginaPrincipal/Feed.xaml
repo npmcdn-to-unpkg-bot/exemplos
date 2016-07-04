@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:senac="clr-namespace:Senac.CrossPlatform.Componentes;assembly=Senac.CrossPlatform"
+             x:Class="Senac.CrossPlatform.View.PaginaPrincipal.Feed">  
+
+              <ContentPage.Padding>
+   				 <OnPlatform x:TypeArguments="Thickness"
+                iOS="0, 20, 0, 0"
+                Android="0, 0, 0, 0"
+                WinPhone="0, 0, 0, 0" />
+  			  </ContentPage.Padding>
+
+
+
+  <ListView x:Name="lstPost" HasUnevenRows="True"  Refreshing="AtualizarPost" IsPullToRefreshEnabled="True" CachingStrategy="RecycleElement" BackgroundColor="#EDEDEE">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <Frame Padding="0,20,0,10" >
+            <StackLayout Orientation="Vertical" BackgroundColor="White" Spacing="0">
+              <StackLayout BackgroundColor="Silver">
+              <senac:SenacImage Source="{Binding ImagemStream}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5" />
+              </StackLayout>
+              <!--HeightRequest="{Binding AlturaImagem}"-->
+
+              <StackLayout Padding="20,10,20,20">
+                <StackLayout Orientation="Vertical">
+                  <Label Text="{Binding Titulo}" TextColor="Gray" FontAttributes="Bold" FontSize="20" HorizontalOptions="StartAndExpand"/>
+                  <Label Text="{Binding Texto}" TextColor="#868685" HorizontalOptions="CenterAndExpand" FontSize="15"/>
+                </StackLayout>                
+              </StackLayout>
+
+              <StackLayout Orientation="Horizontal" Padding="20,0,20,10">
+                
+                <StackLayout Orientation="Vertical">
+                  <AbsoluteLayout>
+                    <senac:SenacImage AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0, 29, 29" Source="img_foto_perfil.png" />
+                    <senac:SenacImage AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0, 30, 30" Source="img_mascara_perfil_branco.png" />
+                    <Button BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0, 30, 30"/>
+                  </AbsoluteLayout>
+                    <Label Text="Nome sobrenome" TextColor="#4E616F" VerticalTextAlignment="Center" FontSize="10" />
+                    <!--Text="{Binding Usuario.Nome}"-->
+                </StackLayout>
+                
+                <BoxView Color="#EDEDEE" WidthRequest="1" HeightRequest="2" HorizontalOptions="EndAndExpand" />
+                
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Padding="10">
+                <Label Text="15 Min" TextColor="#4E616F" FontSize="15" />
+                </StackLayout>
+                
+                <BoxView Color="#EDEDEE" WidthRequest="1" HeightRequest="2" HorizontalOptions="EndAndExpand" />
+
+                <StackLayout HorizontalOptions="CenterAndExpand" >
+                  <Button Image="ic_like_off.png" BackgroundColor="Transparent" WidthRequest="40"  IsVisible="True"/>
+                </StackLayout>
+                
+                <BoxView Color="#EDEDEE" WidthRequest="1" HeightRequest="2" HorizontalOptions="EndAndExpand" />
+
+                <StackLayout>
+                  <Button Image="ic_comentario.png" BackgroundColor="Transparent" WidthRequest="40" Clicked="IrPostAberto" CommandParameter="{Binding PostID}"/>
+                </StackLayout>
+                
+                
+              </StackLayout>
+              
+            </StackLayout>            
+          </Frame>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+
+</ContentPage>

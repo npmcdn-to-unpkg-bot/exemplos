@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Seleçao de cliente</title>
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<f:metadata>
+		<f:viewAction action="#{selecaoClienteBean.init}" />
+	</f:metadata>
+</h:head>
+<h:body>
+	<h:form>
+		<div style="margin-bottom: 7px; margin-left: 130px;">
+			<p:panelGrid columns="2">
+				<p:inputText value="#{selecaoClienteBean.nome}" id="nome"
+					placeholder="Nome do cliente">
+					<p:ajax event="keyup" listener="#{selecaoClienteBean.pesquisar}"
+						process="@this" update="lista" />
+				</p:inputText>
+				<p:commandButton value="Pesquisar"
+					action="#{selecaoClienteBean.pesquisar}" process="@this nome"
+					update="lista" />
+			</p:panelGrid>
+		</div>
+
+		<p:dataTable value="#{selecaoClienteBean.clientesFiltrados}"
+			var="item" id="lista" emptyMessage="Nenhum cliente encontrado"
+			rows="8" paginator="true" paginatorPosition="bottom"
+			paginatorAlwaysVisible="false">
+			<p:column headerText="Id" style="width: 30px">
+				<h:outputText value="#{item.id}" />
+			</p:column>
+
+			<p:column headerText="Nome">
+				<h:outputText value="#{item.nome}" />
+			</p:column>
+
+			<p:column headerText="Telefone" style="text-align: center">
+				<h:outputText value="#{item.telefone}" />
+			</p:column>
+
+			<p:column style="width: 40px">
+				<p:commandButton title="selecionar" icon="ui-icon-check"
+					action="#{selecaoClienteBean.selecionarCliente(item)}"
+					process="@this" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

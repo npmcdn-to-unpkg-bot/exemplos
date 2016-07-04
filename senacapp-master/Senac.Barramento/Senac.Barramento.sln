@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Senac.WebService", "Senac.WebService\Senac.WebService.csproj", "{28FA5DEC-9537-483B-8EF2-AB961271033C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Senac.Business", "Senac.Business\Senac.Business.csproj", "{8C7851FA-CEEE-473C-84B0-6F698C1EC750}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Senac.Data", "Senac.Data\Senac.Data.csproj", "{A11A95E1-7AAE-4BD1-84D2-FBAD9381AF61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28FA5DEC-9537-483B-8EF2-AB961271033C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28FA5DEC-9537-483B-8EF2-AB961271033C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28FA5DEC-9537-483B-8EF2-AB961271033C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28FA5DEC-9537-483B-8EF2-AB961271033C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C7851FA-CEEE-473C-84B0-6F698C1EC750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C7851FA-CEEE-473C-84B0-6F698C1EC750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C7851FA-CEEE-473C-84B0-6F698C1EC750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C7851FA-CEEE-473C-84B0-6F698C1EC750}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A11A95E1-7AAE-4BD1-84D2-FBAD9381AF61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A11A95E1-7AAE-4BD1-84D2-FBAD9381AF61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A11A95E1-7AAE-4BD1-84D2-FBAD9381AF61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A11A95E1-7AAE-4BD1-84D2-FBAD9381AF61}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

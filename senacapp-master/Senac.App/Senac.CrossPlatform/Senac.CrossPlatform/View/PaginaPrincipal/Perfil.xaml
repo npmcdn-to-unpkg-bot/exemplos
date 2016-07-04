@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:senac="clr-namespace:Senac.CrossPlatform.Componentes;assembly=Senac.CrossPlatform"
+             x:Class="Senac.CrossPlatform.View.PaginaPrincipal.Perfil">
+
+             <ContentPage.Padding>
+   			 <OnPlatform x:TypeArguments="Thickness"
+                iOS="0, 20, 0, 0"
+                Android="0, 0, 0, 0"
+                WinPhone="0, 0, 0, 0" />
+  		</ContentPage.Padding>
+  
+  <ScrollView>
+    <StackLayout Orientation="Vertical" BackgroundColor="White" Spacing="0">
+      
+      <StackLayout Orientation="Horizontal" Padding="20,40,20,20">
+        <AbsoluteLayout>
+          <AbsoluteLayout >
+            <senac:SenacImage AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.2, 0, 100, 100" Source="img_foto_perfil.png" x:Name="imgCamera"/>
+            <senac:SenacImage AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.2, 0, 100, 100" Source="img_mascara_perfil_branco.png"/>
+          </AbsoluteLayout>
+          <Button   AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.2, 0, 100, 100" BackgroundColor="Transparent" Clicked="AtualizarFoto" />
+        </AbsoluteLayout>
+
+        <StackLayout Orientation="Vertical" Padding="20,0,0,0" HorizontalOptions="FillAndExpand">
+          <Label x:Name="lblNome" Text="Nome Sobrenome" TextColor="Black" HorizontalTextAlignment="Start" FontSize="20" FontAttributes="Bold"/>
+          <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+          <Label Text="Profissão" TextColor="Gray" HorizontalTextAlignment="Start" FontSize="15"/>
+            <Label Text="( " TextColor="Gray" HorizontalTextAlignment="Center" FontSize="15"/>
+            <Label Text="24" TextColor="Gray" x:Name="lblIdade" FontSize="15"/>
+            <Label Text=" anos ) " TextColor="Gray" HorizontalTextAlignment="Center" FontSize="15"/>
+          </StackLayout>
+          <Button Clicked="EditarPerfil" Text="Editar seu perfil" TextColor="Black" BackgroundColor="#EEEEEF" BorderRadius="2" FontSize="10" HeightRequest="31" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+      </StackLayout>
+      <StackLayout Padding="20,0,0,10">
+        <StackLayout Orientation="Horizontal" Spacing="5">
+          <Image Source="ic_telefone" WidthRequest="15"/>
+          <Label Text="+55 67 9999-9999" TextColor="#000" x:Name="lblTel"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Spacing="5">
+          <Image Source="ic_email" WidthRequest="15"/>
+          <Label Text="usuario@email.com" TextColor="#000" x:Name="lblEmail"/>
+        </StackLayout>
+      </StackLayout>
+      <StackLayout BackgroundColor="White" Spacing="0">
+        <BoxView Color="#EEEEEF" WidthRequest="100" HeightRequest="1"/>
+        <StackLayout Padding="20,10,5,10">
+          <Label Text="Endereço" TextColor="Black" FontAttributes="Bold" FontSize="15"/>
+        </StackLayout>
+        <BoxView Color="#EEEEEF" WidthRequest="100" HeightRequest="1"/>
+        <StackLayout Padding="20" Spacing="10" >
+          <StackLayout Orientation="Horizontal">
+          <Label Text="Alameda dos Anjos" TextColor="Black" x:Name="lblRua" HorizontalOptions="StartAndExpand"/>
+            <Label Text="rua" TextColor="Black" FontAttributes="Bold" FontSize="12" HorizontalOptions="EndAndExpand"/>
+          </StackLayout>
+          <BoxView Color="#9B9B9B" WidthRequest="100" HeightRequest="1"/>
+           <StackLayout Orientation="Horizontal">
+          <Label Text="Zé Pereira" TextColor="Black" x:Name="lblBairro" HorizontalOptions="StartAndExpand"/>
+            <Label Text="bairro" TextColor="Black" FontAttributes="Bold" FontSize="12" HorizontalOptions="EndAndExpand"/>
+          </StackLayout>
+          <BoxView Color="#9B9B9B" WidthRequest="100" HeightRequest="1"/>
+          <StackLayout Orientation="Horizontal">
+            <Label Text="Campo Grande" TextColor="Black" x:Name="lblCidade" HorizontalOptions="StartAndExpand"/>
+            <Label Text="cidade" TextColor="Black" FontAttributes="Bold" FontSize="12" HorizontalOptions="EndAndExpand"/>
+          </StackLayout>
+        </StackLayout>
+      </StackLayout>
+      <StackLayout BackgroundColor="White" Spacing="0">
+      <BoxView Color="#EEEEEF" WidthRequest="100" HeightRequest="1"/>
+      <StackLayout Padding="20,5,20,5" Orientation="Horizontal">
+      <Label Text="Sobre mim" TextColor="Black" FontAttributes="Bold" FontSize="15" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center"/>
+        <Button Text="Minhas postagens" TextColor="White" BackgroundColor="#315790" BorderRadius="2" FontSize="10" HeightRequest="31" HorizontalOptions="EndAndExpand"/>
+      </StackLayout>
+      <BoxView Color="#EEEEEF" WidthRequest="100" HeightRequest="1"/>
+        <StackLayout BackgroundColor="#EEEEEF" Padding="20">
+          <Label Text="Atualmente trabalho como Docente de Nível Superior na área de Informática no SENAC MS
+               em Campo Grande, Mato Grosso do Sul em um projeto chamado Fábrica de Software para um Verejo Melhor. 
+
+                Na Fábrica de Software do Senac MS, utilizamos no curso Programador Web as boas práticas do desenvolvimento Ágil com Scrum.
+                Como tenho a Certificação oficial Scrum Master da Scrum Alliance, posso aplicar as melhores práticas Scrum no decorrer do ciclo de
+                desenvolvimento de sistemas para internet." TextColor="Black" x:Name="lblCurriculo"/>
+        </StackLayout>
+        
+      </StackLayout>
+      <StackLayout BackgroundColor="White" Spacing="0">
+        <StackLayout Padding="20,10,5,10">
+          <Label Text="Conta" TextColor="Black" FontAttributes="Bold" FontSize="15"/>
+        </StackLayout>
+        <BoxView Color="#EEEEEF" WidthRequest="100" HeightRequest="1"/>
+        <StackLayout Padding="20" Spacing="0" >
+          <StackLayout Orientation="Horizontal">
+            <Button Text="Alterar senha" TextColor="#FF7300" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" Clicked="RedefinirSenha"/>
+            <Image Source="ic_senha" HorizontalOptions="EndAndExpand"/>
+          </StackLayout>
+          <BoxView Color="#9B9B9B" WidthRequest="100" HeightRequest="1"/>
+          <StackLayout Orientation="Horizontal">
+            <Button Text="Sair da conta" TextColor="#FF001F" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" Clicked="Sair"/>
+            <Image Source="ic_sair" HorizontalOptions="EndAndExpand"/>
+          </StackLayout>
+          
+        </StackLayout>
+      </StackLayout>
+
+      
+      
+
+      
+      
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

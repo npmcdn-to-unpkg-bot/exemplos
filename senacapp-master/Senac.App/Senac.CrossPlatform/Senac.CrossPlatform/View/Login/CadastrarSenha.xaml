@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:senac="clr-namespace:Senac.CrossPlatform.Componentes;assembly=Senac.CrossPlatform"
+             x:Class="Senac.CrossPlatform.View.Login.CadastrarSenha"
+             BackgroundColor="White">
+
+  <!-- Cadastro de Senhas -->
+  <StackLayout>
+    <Label TextColor="Black" HorizontalOptions="Center"> Cadastre sua Senha </Label>
+
+    <StackLayout Spacing="15" Padding="15" VerticalOptions="Center" >
+
+      <!-- Logo do Senac -->
+      <senac:SenacImage x:Name="imgSenac" WidthRequest="120"></senac:SenacImage>
+
+      <!-- Entradas -->
+      <senac:SenacEntry Placeholder="Senha" x:Name="txtCadastrarSenha" TextColor="Black" IsPassword="True"/>
+      <senac:SenacEntry Placeholder="Repetir Nova Senha" x:Name="txtRetryNovaSenha" TextColor="Black" IsPassword="true"/>
+
+      <!--<Label TextColor="Black" HorizontalOptions="Center"> Pergunta Secreta</Label>
+      <Label HorizontalOptions="Center" TextColor="#FF7F00"> Qual nome da sua cidade natal ? </Label>-->
+
+      <!-- Button -->
+      <Button Text="Proximo" TextColor="White" BackgroundColor="#243955" Clicked="ValidarSenha"/>
+    </StackLayout>
+
+  </StackLayout>
+</ContentPage>

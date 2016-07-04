@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:senac="clr-namespace:Senac.CrossPlatform.Componentes;assembly=Senac.CrossPlatform"
+             x:Class="Senac.CrossPlatform.View.PaginaPrincipal.PostAberto" BackgroundColor="#f0f0f5">
+
+
+  <StackLayout Spacing="0">
+    
+    
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+      <StackLayout Spacing="0">
+        <StackLayout Orientation="Vertical" BackgroundColor="White" Spacing="0">
+          <AbsoluteLayout BackgroundColor="White">
+            <senac:SenacImage x:Name="imgPost" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5" />
+            <Button Image="back.png" BackgroundColor="Transparent" WidthRequest="50" Clicked="IrFeed"/>
+          </AbsoluteLayout>
+          <!--HeightRequest="{Binding AlturaImagem}"-->
+
+          <StackLayout Padding="20,10,20,20">
+            <StackLayout Orientation="Vertical">
+              <Label x:Name="txtTitulo" Text="{Binding Titulo}" TextColor="Gray" FontAttributes="Bold" FontSize="20" HorizontalOptions="StartAndExpand"/>
+              <Label x:Name="txtTexto" Text="{Binding Texto}" TextColor="#868685" HorizontalOptions="CenterAndExpand" FontSize="15"/>
+            </StackLayout>
+          </StackLayout>
+
+          <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
+            <AbsoluteLayout>
+              <senac:SenacImage AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0, 29, 29" Source="img_foto_perfil.png" />
+              <senac:SenacImage AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0, 30, 30" Source="img_mascara_perfil_branco.png" />
+            </AbsoluteLayout>
+            <Button Text="Nome sobrenome" TextColor="#4E616F" FontAttributes="Bold" FontSize="10" BackgroundColor="Transparent" HeightRequest="31"/>
+            <!--Text="{Binding Usuario.Nome}"-->
+          </StackLayout>
+
+         
+          <StackLayout Orientation="Horizontal" Padding="10" BackgroundColor="White">     
+
+            <StackLayout VerticalOptions="CenterAndExpand" Orientation="Horizontal">
+              <Button Image="ic_like_off.png" BackgroundColor="Transparent" WidthRequest="40" x:Name="btnLikeOff" Clicked="Curtir" IsVisible="True"/>
+              <Button Image="ic_like_on.png" BackgroundColor="Transparent" WidthRequest="40" x:Name="btnLikeOn" Clicked="Curtir" IsVisible="False"/>
+              <Label Text="0" x:Name="contLike" TextColor="#4E616F"  VerticalOptions="Center" FontSize="15" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <BoxView Color="#EDEDEE" WidthRequest="1" HeightRequest="2" HorizontalOptions="EndAndExpand" />
+
+            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+              <Button Image="ic_comentario.png" BackgroundColor="Transparent" WidthRequest="40" />
+              <Label x:Name="contComent" TextColor="#4E616F"  VerticalOptions="Center" FontSize="15" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <BoxView Color="#EDEDEE" WidthRequest="1" HeightRequest="2" HorizontalOptions="EndAndExpand" />
+
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+              <Label Text="15 Min" TextColor="#4E616F" FontSize="15" />
+            </StackLayout>
+
+
+          </StackLayout>
+
+        </StackLayout>
+
+        <StackLayout >
+          <ListView x:Name="lstComentario" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell >
+                  
+                  <StackLayout Orientation="Vertical" Spacing="0">
+                  <BoxView Color="#ECECEC" WidthRequest="100" HeightRequest="2"/>
+                  <!--LINHA PARA SEPARAR-->
+                  <StackLayout Orientation="Horizontal" BackgroundColor="White" Padding="10" >
+                    
+                    <AbsoluteLayout>
+                      <senac:SenacImage AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0, 39, 39" Source="img_foto_perfil.png" />
+                      <senac:SenacImage AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0, 40, 40" Source="img_mascara_perfil_branco.png" />
+                    </AbsoluteLayout>
+
+                   
+                    <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" Spacing="0">
+                      <Label Text="Nome Usuario" TextColor="#315790" VerticalTextAlignment="Center" FontSize="15" />
+                      
+                        <Label Text="{Binding Texto}"  HorizontalOptions="FillAndExpand" TextColor="#868685"/>
+                     
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                      <senac:SenacImage Source="ic_tempo.png" WidthRequest="12" VerticalOptions="Center"/>
+                      <Label Text="11:30 AM" TextColor="#868685" FontSize="12" />
+                    </StackLayout>
+                                        
+                  </StackLayout>
+                  </StackLayout>
+                  
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
+    <StackLayout Orientation="Horizontal" BackgroundColor="White" Padding="10,10,10,5" >
+       <Entry x:Name="newComentario" Placeholder="Escreva um comentário..." FontSize="15" PlaceholderColor="Silver" TextColor="#315790"  BackgroundColor="White" HorizontalOptions="FillAndExpand"/>
+      <Button Text="ENVIAR" TextColor="#FF7300"  FontSize="20" BackgroundColor="White" HorizontalOptions="EndAndExpand" Clicked="Comentar"/>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

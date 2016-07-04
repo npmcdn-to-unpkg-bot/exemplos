@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<f:metadata>
+		<f:viewAction action="#{atendimentosBean.init}" />
+	</f:metadata>
+
+	<ui:define name="content">
+			<h:form>
+				<p:dataTable value="#{atendimentosBean.atendimentos}" var="item"
+					paginator="true" rows="8" paginatorPosition="bottom"
+					selectionMode="single"
+					selection="#{atendimentosBean.atendimentoSelecionado}"
+					rowKey="#{item.id}">
+
+					<f:facet name="header">
+					Atendimentos
+				</f:facet>
+
+					<f:facet name="footer">
+						<p:commandButton icon="ui-icon-search" title="Mesas" value="Mesas"
+							action="#{selecaoMesaBean.abrirDialog}" update="@none"
+							process="@this" />
+					</f:facet>
+
+					<!-- Abre dialog quando o usuário clicar em um item da lista  -->
+					<p:ajax event="rowSelect"
+						update=":formDialogAtendimentoSelecionado:atendimentoDetalhes"
+						oncomplete="PF('atendimento').show()" />
+
+					<p:column headerText="Número">
+						<h:outputText value="#{item.id}" />
+					</p:column>
+
+					<p:column headerText="Cliente">
+						<h:outputText value="#{item.cliente.nome}" />
+					</p:column>
+
+					<p:column headerText="Qtd. Pessoas" style="text-align: center">
+						<h:outputText value="#{item.quantidadePessoas}" />
+					</p:column>
+
+					<p:column headerText="Entrada" style="text-align: center">
+						<h:outputText value="#{item.horaChegada.time}">
+							<f:convertDateTime pattern="HH:mm" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Atendimento" style="text-align: center">
+						<h:panelGroup rendered="#{item.horaAtendimento != null}">
+							<h:outputText value="#{item.horaAtendimento.time}">
+								<f:convertDateTime pattern="HH:mm" />
+							</h:outputText>
+						</h:panelGroup>
+						<h:panelGroup rendered="#{item.horaAtendimento == null}">
+							<h:outputText value="-" />
+						</h:panelGroup>
+					</p:column>
+
+					<p:column headerText="Mesa" style="text-align: center">
+						<h:panelGroup rendered="#{item.mesa != null}">
+							<h:outputText value="#{item.mesa}" />
+						</h:panelGroup>
+						<h:panelGroup rendered="#{item.mesa == null}">
+							<h:outputText value="-" />
+						</h:panelGroup>
+					</p:column>
+
+					<p:column headerText="Saida" style="text-align: center">
+						<h:panelGroup rendered="#{item.horaSaida != null}">
+							<h:outputText value="#{item.horaSaida.time}">
+								<f:convertDateTime pattern="HH:mm" />
+							</h:outputText>
+						</h:panelGroup>
+						<h:panelGroup rendered="#{item.horaSaida == null}">
+							<h:outputText value="-" />
+						</h:panelGroup>
+					</p:column>
+
+					<p:column headerText="Situação" style="text-align: center">
+						<h:outputText value="#{item.status.descricao}" />
+					</p:column>
+
+					<p:column style="width: 90px; text-align: center;">
+						<h:panelGroup>
+
+							<!-- Botão para ATENDER atendimento -->
+							<p:commandButton icon="ui-icon-clock" title="Atender"
+								rendered="#{item.status.descricao == 'ESPERANDO'}"
+								action="#{selecaoMesaBean.abrirDialog}" update="@none"
+								process="@this">
+
+								<f:setPropertyActionListener value="#{item}"
+									target="#{atendimentosBean.atendimentoSelecionado}" />
+
+								<p:ajax event="dialogReturn" process="@this" update="@form"
+									listener="#{atendimentosBean.confirmaAtendimento}" />
+							</p:commandButton>
+
+							<!-- Botão para CANCELAR atendimento -->
+							<p:commandButton icon="ui-icon-cancel" title="Cancelar"
+								onclick="PF('cancelarDialog').show()"
+								rendered="#{item.status.descricao == 'ESPERANDO'}"
+								process="@this">
+
+								<f:setPropertyActionListener value="#{item}"
+									target="#{atendimentosBean.atendimentoSelecionado}" />
+							</p:commandButton>
+						</h:panelGroup>
+					</p:column>
+				</p:dataTable>
+
+				<!-- Dialog para FINALIZAR atendimento  -->
+				<p:confirmDialog widgetVar="finalizarDialog" header="Finalizar"
+					closable="false" message="Deseja finalizar este atendimento?"
+					showEffect="fade" hideEffect="fade" severity="alert">
+
+					<p:commandButton value="Sim"
+						update="@form :formDialogAtendimentoSelecionado:atendimentoDetalhes"
+						process="@this" action="#{atendimentosBean.finalizarAtendimento}"
+						oncomplete="PF('finalizarDialog').hide()" />
+
+					<p:commandButton value="Não"
+						oncomplete="PF('finalizarDialog').hide()" />
+				</p:confirmDialog>
+
+
+				<!-- Dialog de confirmação para CANCELAR  -->
+				<p:confirmDialog header="Confirmação"
+					message="Deseja realmente cancelar esse atendimento?"
+					widgetVar="cancelarDialog" showEffect="fade" hideEffect="fade"
+					severity="alert">
+
+					<p:commandButton value="Sim" styleClass="ui-confirmdialog-yes"
+						process="@this" update="@form" icon="ui-icon-check"
+						oncomplete="PF('cancelarDialog').hide()"
+						action="#{atendimentosBean.cancelarAtendimento}" />
+
+					<p:commandButton value="Não"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+						oncomplete="PF('cancelarDialog').hide()" />
+				</p:confirmDialog>
+			</h:form>
+
+			<!-- Dialog que mostra as informações-->
+			<h:form id="formDialogAtendimentoSelecionado">
+				<p:dialog header="Informações do Atendimento"
+					widgetVar="atendimento" modal="true" resizable="false"
+					showEffect="fade" hideEffect="fade">
+					<p:panelGrid id="atendimentoDetalhes" columns="2"
+						style="text-align:center;">
+						<h:outputText value="Número" />
+						<h:outputText
+							value="#{atendimentosBean.atendimentoSelecionado.id}" />
+
+						<h:outputText value="Quantidade de pessoas" />
+						<h:outputText
+							value="#{atendimentosBean.atendimentoSelecionado.quantidadePessoas}" />
+
+						<h:outputText value="Hora da chegada" />
+						<h:outputText
+							value="#{atendimentosBean.atendimentoSelecionado.horaChegada.time}">
+							<f:convertDateTime pattern="HH:mm" />
+						</h:outputText>
+
+						<h:outputText value="Hora do atendimento" />
+						<h:outputText
+							value="#{atendimentosBean.atendimentoSelecionado.horaAtendimento.time}"
+							rendered="#{atendimentosBean.atendimentoSelecionado.horaAtendimento != null}">
+							<f:convertDateTime pattern="HH:mm" />
+						</h:outputText>
+						<h:outputText value="-"
+							rendered="#{atendimentosBean.atendimentoSelecionado.horaAtendimento == null}" />
+
+						<h:outputText value="Hora da saida" />
+						<h:outputText
+							value="#{atendimentosBean.atendimentoSelecionado.horaSaida.time}"
+							rendered="#{atendimentosBean.atendimentoSelecionado.horaSaida != null}">
+							<f:convertDateTime pattern="HH:mm" />
+						</h:outputText>
+						<h:outputText value="-"
+							rendered="#{atendimentosBean.atendimentoSelecionado.horaSaida == null}" />
+
+						<h:outputText value="Status" />
+						<h:outputText
+							value="#{atendimentosBean.atendimentoSelecionado.status.descricao}" />
+
+						<h:outputText value="Mesa" />
+						<h:outputText
+							value="#{atendimentosBean.atendimentoSelecionado.mesa}" />
+
+						<h:outputText value="Nome do cliente" />
+						<h:outputText
+							value="#{atendimentosBean.atendimentoSelecionado.cliente.nome}" />
+
+						<h:outputText value="Telefone do cliente" />
+						<h:outputText
+							value="#{atendimentosBean.atendimentoSelecionado.cliente.telefone}" />
+
+						<h:outputText value="Nome do funcionário" />
+						<h:outputText
+							value="#{atendimentosBean.atendimentoSelecionado.funcionario.nome}" />
+
+						<h:outputText value="Função do funcionário" />
+						<h:outputText
+							value="#{atendimentosBean.atendimentoSelecionado.funcionario.funcao}" />
+
+						<h:outputText
+							rendered="#{atendimentosBean.atendimentoSelecionadoComStatusNaMesa}" />
+						<h:panelGroup
+							rendered="#{atendimentosBean.atendimentoSelecionadoComStatusNaMesa}">
+							<!-- Botão para FINALIZAR atendimento -->
+							<p:commandButton icon="ui-icon-check" value="Finalizar"
+								onclick="PF('finalizarDialog').show()" process="@this"
+								title="Finalizar">
+							</p:commandButton>
+						</h:panelGroup>
+					</p:panelGrid>
+				</p:dialog>
+			</h:form>
+	</ui:define>
+</ui:composition>
+</html>

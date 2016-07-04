@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="listaTelefonica">
+<head>
+	<meta charset="utf-8">
+	<title>Lista Telefonica</title>
+	<script src="lib/jquery/jquery-2.2.3.js"></script>
+	<script src="lib/bootstrap/js/bootstrap.js"></script>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<link rel="stylesheet" type="text/css" href="css/ui-alert.css">
+	
+	<!-- Angular Js -->
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular/angular-route.js"></script>
+	<script src="lib/angular/angular-locale_pt-br.js"></script>
+
+	<script src="lib/serialGenerator/serialGenerator.js"></script>
+	<script src="lib/ui/ui.js"></script>
+
+	<!-- Modulo e Controller -->
+	<script src="js/app.js"></script>
+	<script src="js/controllers/listaTelefonicaCtrl.js"></script>
+
+	<!-- DIRETIVAS-->
+	<script src="js/directives/ui-alert.js"></script>
+	<script src="js/directives/ui-date.js"></script>
+	<script src="js/directives/ui-cpf.js"></script>
+	<script src="js/directives/ui-modal.js"></script>
+
+	<!-- Services -->
+	<script src="js/services/contatosAPIService.js"></script>
+	<script src="js/services/operadorasAPIService.js"></script>
+
+	<!-- Configurações -->
+	<script src="js/value/configValue.js"></script>
+	<script src="js/config/serialGeneratorConfig.js"></script>
+	<script src="js/config/route-config.js"></script>
+</head>
+<body>
+	<div ng-view></div>
+
+	<div ng-include="'view/footer.html'"></div>
+</body>
+</html>

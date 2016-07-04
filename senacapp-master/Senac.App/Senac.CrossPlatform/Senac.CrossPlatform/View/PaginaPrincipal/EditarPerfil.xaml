@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:senac="clr-namespace:Senac.CrossPlatform.Componentes;assembly=Senac.CrossPlatform"
+             x:Class="Senac.CrossPlatform.View.PaginaPrincipal.EditarPerfil">
+
+             <ContentPage.Padding>
+   			 <OnPlatform x:TypeArguments="Thickness"
+                iOS="0, 20, 0, 0"
+                Android="0, 0, 0, 0"
+                WinPhone="0, 0, 0, 0" />
+  		</ContentPage.Padding>
+
+  <StackLayout Spacing="0">
+    
+  <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+    <StackLayout BackgroundColor="White" Orientation="Vertical">
+      
+      <StackLayout Orientation="Vertical" Padding="20,40,20,20" Spacing="0">
+
+        <StackLayout Orientation="Horizontal">
+          <Entry  Placeholder="Nome e Sobrenome" PlaceholderColor="Silver" TextColor="Black"  FontSize="15"  x:Name="edtNome" Keyboard="Text" HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+        
+        <BoxView Color="#E0E0E0" WidthRequest="100" HeightRequest="1"/>
+        <StackLayout Orientation="Horizontal" Padding="0">
+          <Label Text="nome" TextColor="Silver" FontSize="12" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+
+        <StackLayout x:Name="lblErroNome" IsVisible="False" BackgroundColor="Red" Padding="5" VerticalOptions="EndAndExpand">
+          <Label Text="Campo vazio deve ser preenchido." VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+          <Entry Placeholder="Idade" TextColor="Black" PlaceholderColor="Silver" x:Name="edtIdade" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+        
+        <BoxView Color="#E0E0E0" WidthRequest="100" HeightRequest="1"/>
+        <StackLayout Orientation="Horizontal" Padding="0">
+          <Label Text="idade" TextColor="Silver" FontSize="12" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+
+        <StackLayout x:Name="lblErroIdade" IsVisible="False" BackgroundColor="Red" Padding="5" VerticalOptions="EndAndExpand">
+          <Label Text="Campo vazio deve ser preenchido." VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+          <Entry Placeholder="Telefone" TextColor="Black" PlaceholderColor="Silver"  x:Name="edtTel" Keyboard="Telephone" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+        
+        <BoxView Color="#E0E0E0" WidthRequest="100" HeightRequest="1"/>
+        <StackLayout Orientation="Horizontal" Padding="0">
+          <Label Text="telefone" TextColor="Silver" FontSize="12" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+
+        <StackLayout x:Name="lblErroTel" IsVisible="False" BackgroundColor="Red" Padding="5" VerticalOptions="EndAndExpand">
+          <Label Text="Campo vazio deve ser preenchido." VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+          <Entry Placeholder="E-mail" TextColor="Black" PlaceholderColor="Silver"  x:Name="edtEmail" Keyboard="Email" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>        
+
+        <BoxView Color="#E0E0E0" WidthRequest="100" HeightRequest="1"/>
+        <StackLayout Orientation="Horizontal" Padding="0">
+          <Label Text="e-mail" TextColor="Silver" FontSize="12" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+        <StackLayout x:Name="lblErroEmail" IsVisible="False" BackgroundColor="Red" Padding="5" VerticalOptions="EndAndExpand">
+          <Label Text="Campo vazio deve ser preenchido." VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" Padding="0,10,0,5">
+          <Label Text="Sobre mim" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical" Spacing="0" >
+          <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
+        <StackLayout Orientation="Horizontal">
+          <BoxView Color="Black" WidthRequest="1" HeightRequest="200"/>
+          <Editor TextColor="Black"  x:Name="edtCurriculum" Keyboard="Text" VerticalOptions="StartAndExpand" HeightRequest="250" WidthRequest="300"/>
+          <BoxView Color="Black" WidthRequest="1" HeightRequest="200" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+          <BoxView Color="Black" WidthRequest="100" HeightRequest="1"/>
+        </StackLayout>
+
+        <BoxView Color="#E0E0E0" WidthRequest="100" HeightRequest="1"/>
+        <StackLayout x:Name="lblErroCurriculo" IsVisible="False" BackgroundColor="Red" Padding="5" VerticalOptions="EndAndExpand">
+          <Label Text="Campo vazio deve ser preenchido." VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" Padding="0,20,0,5">
+          <Label Text="INFORMAÇÕES PRIVADAS" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+
+        <BoxView Color="Black" WidthRequest="100" HeightRequest="2"/>
+
+        <StackLayout Orientation="Horizontal" Padding="0,10,0,0">
+          <Entry Placeholder="Rua" TextColor="Black" FontAttributes="Bold" PlaceholderColor="Silver"  x:Name="edtRua" Keyboard="Text" HorizontalOptions="FillAndExpand"/>       
+        </StackLayout>
+
+        <BoxView Color="#E0E0E0" WidthRequest="100" HeightRequest="1"/>
+       
+        <StackLayout x:Name="lblErroRua" IsVisible="False" BackgroundColor="Red" Padding="5" VerticalOptions="EndAndExpand">
+          <Label Text="Campo vazio deve ser preenchido." VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="0">
+          <Label Text="rua" TextColor="Silver" FontSize="12" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal">
+          <Entry Placeholder="Bairro" TextColor="Black" FontAttributes="Bold" PlaceholderColor="Silver"  x:Name="edtBairro" Keyboard="Text" HorizontalOptions="FillAndExpand"/>   
+        </StackLayout>
+
+        <BoxView Color="#E0E0E0" WidthRequest="100" HeightRequest="1"/>
+        
+        <StackLayout x:Name="lblErroBairro" IsVisible="False" BackgroundColor="Red" Padding="5" VerticalOptions="EndAndExpand">
+          <Label Text="Campo vazio deve ser preenchido." VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="0">
+          <Label Text="bairro" TextColor="Silver" FontSize="12" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal">
+          <Entry Placeholder="Cidade" TextColor="Black" FontAttributes="Bold" PlaceholderColor="Silver"  x:Name="edtCidade" Keyboard="Text" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+        
+
+        <BoxView Color="#E0E0E0" WidthRequest="100" HeightRequest="1"/>
+        
+        <StackLayout x:Name="lblErroCidade" IsVisible="False" BackgroundColor="Red" Padding="5" VerticalOptions="EndAndExpand">
+          <Label Text="Campo vazio deve ser preenchido." VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="0">
+          <Label Text="cidade" TextColor="Silver" FontSize="12" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+
+        
+      </StackLayout>
+
+
+    </StackLayout>
+  </ScrollView>
+    <StackLayout BackgroundColor="#EEEEEF" VerticalOptions="StartAndExpand">
+      <StackLayout Orientation="Horizontal" Padding="20,5,20,5">
+        <AbsoluteLayout HorizontalOptions="StartAndExpand">
+          <Image Source="ic_fechar.png" WidthRequest="50" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5"/>
+          <Button BackgroundColor="Transparent" WidthRequest="50" Clicked="Cancelar" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5" />
+        </AbsoluteLayout>
+        <Button BackgroundColor="Transparent" Text="Salvar" TextColor="Black" Clicked="AtualizarPerfil" HorizontalOptions="EndAndExpand" FontSize="20"/>
+      </StackLayout>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

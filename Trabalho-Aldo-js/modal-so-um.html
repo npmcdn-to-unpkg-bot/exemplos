@@ -1,0 +1,93 @@
+<!doctype html>
+<html ng-app="ui.bootstrap.demo">
+<head>
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular/angular-animate.js"></script>
+  <script src="lib/angular/ui-bootstrap-tpls-1.3.3.min.js"></script>
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+
+  <script>
+    angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
+    angular.module('ui.bootstrap.demo').controller('ModalDemoCtrl', function ($scope, $uibModal, $http) {
+
+      $scope.carregarClientes = function () {
+        $http.get("http://localhost:8080/JAX-RS/Cliente").success(function (data) {
+          abreModal(data);
+        }).error(function (data, status) {
+          $scope.mensagem = "Aconteceu um erro " + data;
+        });
+      };
+      
+      var abreModal = function (data) {
+        var modalInstance = $uibModal.open({
+          animation: true,
+          templateUrl: 'dialog-clientes',
+          controller: 'ModalInstanceCtrl',
+          resolve: {
+            items: function () {
+              return data;
+            }
+          }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+          $scope.itemSelecionado = selectedItem;
+        }, function () {
+        });
+      };
+    });
+
+    angular.module('ui.bootstrap.demo').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
+      $scope.clientesModal = items;
+
+      $scope.selectedDentro = {
+        item: $scope.clientesModal[0]
+      };
+
+      $scope.ok = function () {
+        $uibModalInstance.close($scope.selectedDentro.item);
+      };
+
+      $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+      };
+    });
+  </script>
+</head>
+<body>
+
+  <div ng-controller="ModalDemoCtrl">
+    <script type="text/ng-template" id="dialog-clientes">
+      <div class="modal-header">
+        <h3 class="modal-title">Selecione um cliente</h3>
+      </div>
+      <div class="modal-body">
+        <input type="text" ng-model="criterioBusca" class="form-control" placeholder="Digite o nome de um cliente">
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Telefone</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="itemLista in clientesModal | filter:{nome:criterioBusca}">
+              <td>{{itemLista.nome}}</td>
+              <td>{{itemLista.telefone}}</td>
+              <td><a href="#" ng-click="selectedDentro.item = itemLista; ok()" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+      </div>
+    </script>
+
+    <button type="button" class="btn btn-default" ng-click="carregarClientes()">Open mgge!</button>
+    <div ng-show="itemSelecionado">Selection from a modal: {{ itemSelecionado }}</div>
+  </div>
+</body>
+</html>

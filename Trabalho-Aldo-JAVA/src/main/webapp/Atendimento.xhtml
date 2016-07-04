@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="content">
+			<h:form>
+				<p:messages autoUpdate="true" showSummary="true" showDetail="false" />
+
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Nome do responsável" for="cliente" />
+					<h:panelGroup>
+						<p:inputText id="cliente"
+							value="#{atendimentoBean.atendimento.cliente.nome}"
+							readonly="#{atendimentoBean.atendimento.cliente.id > 0}" />
+						<p:commandButton icon="ui-icon-search" value="Pesquisa"
+							action="#{selecaoClienteBean.abrirDialog}" update="@none"
+							process="@this">
+
+							<p:ajax event="dialogReturn" process="@this"
+								update="cliente telefone"
+								listener="#{atendimentoBean.clienteSelecionado}" />
+						</p:commandButton>
+					</h:panelGroup>
+
+					<p:outputLabel value="Telefone do responsável" for="telefone" />
+					<p:inputText id="telefone"
+						value="#{atendimentoBean.atendimento.cliente.telefone}"
+						readonly="#{atendimentoBean.atendimento.cliente.id > 0}" />
+
+					<p:outputLabel value="Quantidade de pessoas" for="qtd" />
+					<p:inputText id="qtd" type="number"
+						value="#{atendimentoBean.atendimento.quantidadePessoas}" />
+
+					<p:outputLabel value="Hora" for="hora" />
+					<p:calendar id="hora"
+						value="#{atendimentoBean.atendimento.horaChegada.time}"
+						pattern="dd/MM/yyyy HH:mm:ss">
+					</p:calendar>
+
+					<p:outputLabel />
+					<h:panelGroup>
+						<p:commandButton value="Adicionar a fila"
+							action="#{atendimentoBean.adicionarNaFila}" process="@form"
+							update="@form" />
+						<p:commandButton value="Limpar formulário"
+							action="#{atendimentoBean.inicialiazar}" process="@this"
+							update="@form" />
+					</h:panelGroup>
+				</p:panelGrid>
+			</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

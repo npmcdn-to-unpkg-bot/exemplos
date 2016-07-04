@@ -1,0 +1,7 @@
+﻿select * from operadora;
+insert into operadora (id, categoria, codigo, nome, preco) values (1, 'Celular', 10, 'Claro', 2);
+insert into operadora (id, categoria, codigo, nome, preco) values (2, 'Celular', 11, 'Vivo', 1);
+insert into operadora (id, categoria, codigo, nome, preco) values (3, 'Celular', 12, 'Oi', 3);
+insert into operadora (id, categoria, codigo, nome, preco) values (4, 'Celular', 13, 'Tim', 3);
+insert into operadora (id, categoria, codigo, nome, preco) values (5, 'Fixo', 14, 'GVT', 2);
+insert into operadora (id, categoria, codigo, nome, preco) values (6, 'Fixo', 15, 'Embratel', 2);

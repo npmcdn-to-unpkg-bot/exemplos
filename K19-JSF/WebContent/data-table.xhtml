@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="content">
+		<h:form id="form">
+			<p:dataTable id="tabela" value="#{dataTableBean.cursos}" var="c"
+				rows="4" paginator="true" paginatorPosition="top"
+				rowKey="#{c.sigla}" selectionMode="multiple"
+				filteredValue="#{dataTableBean.cursosFiltrados}"
+				selection="#{dataTableBean.cursosSelecionados}">
+				<f:facet name="header">
+					<h:outputText value=" Cursos da K19" />
+				</f:facet>
+
+				<p:column headerText="ID" sortBy="#{c.id}" filterBy="#{c.id}">
+					<h:outputText value="#{c.id}" />
+				</p:column>
+
+				<p:column headerText="Logo" exportable="false">
+					<p:graphicImage value="#{c.logo}" />
+				</p:column>
+
+				<p:column headerText="Sigla">
+					<h:outputText value="#{c.sigla}" />
+				</p:column>
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{c.nome}" />
+				</p:column>
+
+				<f:facet name="footer">
+					<p:commandButton value="Escolher Curso"
+						update=":form:curso-escolhido" />
+
+					<h:panelGrid columns="3">
+						<h:panelGroup>
+							Exportar toda a tabela
+							<h:commandButton value="XLS">
+								<p:dataExporter type="xls" target="tabela" fileName="cursos"></p:dataExporter>
+							</h:commandButton>
+
+							<h:commandButton value="PDF">
+								<p:dataExporter type="pdf" target="tabela" fileName="cursos"></p:dataExporter>
+							</h:commandButton>
+
+							<h:commandButton value="CSV">
+								<p:dataExporter type="csv" target="tabela" fileName="cursos"></p:dataExporter>
+							</h:commandButton>
+
+							<h:commandButton value="XML">
+								<p:dataExporter type="xml" target="tabela" fileName="cursos"></p:dataExporter>
+							</h:commandButton>
+						</h:panelGroup>
+
+						<h:panelGroup>
+							Exportar apenas essa página
+							<h:commandButton value="XLS">
+								<p:dataExporter type="xls" target="tabela" fileName="cursos"
+									pageOnly="true" />
+							</h:commandButton>
+
+							<h:commandButton value="PDF">
+								<p:dataExporter type="pdf" target="tabela" fileName="cursos"
+									pageOnly="true" />
+							</h:commandButton>
+
+							<h:commandButton value="CSV">
+								<p:dataExporter type="csv" target="tabela" fileName="cursos"
+									pageOnly="true" />
+							</h:commandButton>
+
+							<h:commandButton value="XML">
+								<p:dataExporter type="xml" target="tabela" fileName="cursos"
+									pageOnly="true" />
+							</h:commandButton>
+						</h:panelGroup>
+					</h:panelGrid>
+				</f:facet>
+			</p:dataTable>
+
+			<p:panel id="curso-escolhido" header="Cursos escolhidos">
+				<ul>
+					<ui:repeat var="c" value="#{dataTableBean.cursosSelecionados}">
+						<h:panelGroup
+							rendered="#{not empty dataTableBean.cursosSelecionados}">
+							<li><h:outputText value="#{c.nome}" /></li>
+						</h:panelGroup>
+					</ui:repeat>
+					<h:panelGroup
+						rendered="#{dataTableBean.cursosSelecionados == null or empty dataTableBean.cursosSelecionados}">
+						<li>Nenhum curso na lista</li>
+					</h:panelGroup>
+				</ul>
+			</p:panel>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

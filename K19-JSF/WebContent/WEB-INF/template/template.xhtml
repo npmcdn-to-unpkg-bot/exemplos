@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title><ui:insert name="title">K19 Treinamentos</ui:insert></title>
+</h:head>
+
+<h:body>
+
+	<div id="header">
+		<img src="resources/img/k19-logo.png" />
+	</div>
+
+	<h:link value="Pagina 1" outcome="/pagina1" />
+	<h:link value="Formulario" outcome="/formulario" />
+	<h:link value="Listagem" outcome="/listagem-de-instrutores" />
+
+	<div id="content">
+		<ui:insert name="content">
+			Espaço para o conteúdo da tela
+		</ui:insert>
+	</div>
+
+	<div id="footer" style="text-align: center;">copy ; 2012 K19 .
+		Todos os direitos reservados</div>
+
+</h:body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+<ui:composition template="/WEB-INF/template/layout.xhtml">
+	<f:metadata>
+		<o:viewParam name="id" value="#{cadastroPessoaBean.id}" />
+		<f:viewAction action="#{cadastroPessoaBean.init}" />
+	</f:metadata>
+
+	<ui:define name="titulo">
+		Cadastro de Pessoas
+	</ui:define>
+	<ui:define name="corpo">
+		<h:form id="form">
+			<p:messages autoUpdate="true" showDetail="false" showSummary="true" />
+
+			<p:panelGrid columns="2">
+				<h:outputText value="Id"
+					rendered="#{cadastroPessoaBean.pessoa != null}" />
+				<p:inputText value="#{cadastroPessoaBean.pessoa.id}" disabled="true"
+					rendered="#{cadastroPessoaBean.pessoa != null}" />
+
+				<p:outputLabel value="Nome" for="nome" />
+				<p:autoComplete id="nome" size="20"
+					value="#{cadastroPessoaBean.pessoa.nome}"
+					completeMethod="#{cadastroPessoaBean.nomesPessoas}" />
+
+				<p:outputLabel />
+				<p:commandButton action="#{cadastroPessoaBean.salvar}"
+					value="Salvar" update=":form" />
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

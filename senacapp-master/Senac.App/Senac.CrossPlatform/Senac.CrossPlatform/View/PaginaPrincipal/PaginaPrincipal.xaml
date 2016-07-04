@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:senac="clr-namespace:Senac.CrossPlatform.View.PaginaPrincipal;assembly=Senac.CrossPlatform"
+             x:Class="Senac.CrossPlatform.View.PaginaPrincipal.PaginaPrincipal">
+  
+  <NavigationPage Title="Feed" >
+    <x:Arguments>
+      <senac:Feed/>    
+    </x:Arguments>
+  </NavigationPage>
+
+  <NavigationPage Title="Perfil">
+    <x:Arguments>
+      <senac:Perfil/>
+    </x:Arguments>
+  </NavigationPage>
+
+  <NavigationPage Title="Cursos" >
+    <x:Arguments>
+      <senac:Cursos/>
+    </x:Arguments>
+  </NavigationPage>
+
+  <NavigationPage Title="+Post" >
+    <x:Arguments>
+      <senac:NovoPost/>
+    </x:Arguments>
+  </NavigationPage>
+</TabbedPage>

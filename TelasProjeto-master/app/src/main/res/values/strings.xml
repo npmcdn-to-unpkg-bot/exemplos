@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Senac MS</string>
+    <string name="title_activity_pagina_incial">Pagina Incial</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Filtro</string>
+    <string name="nomecurso">NomeCurso</string>
+    <string name="paginaIncial">Página Inicial</string>
+    <string name="textoRedefinicaoDeSenha">REDEFINIÇÃO DE SENHA</string>
+    <string name="perfil">Perfil</string>
+    <string name="ok">OK</string>
+    <string name="mensagem_erro">Conceda as permissões para usar este aplicativo</string>
+    <string name="nomeCompleto">Nome Sobrenome</string>
+    <string name="sobre">Sobre</string>
+    <string name="minhasPublicacoes">Minhas Publicações</string>
+    <string name="title_activity_primeiro_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Digite seu CPF</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="textoCPF">Insira seu CPF</string>
+    <string name="textoBtnEntrar">ENTRAR</string>
+    <string name="textoBtnProximo">PRÓXIMO</string>
+    <string name="textoCadastrarSenha">Cadastre sua senha</string>
+    <string name="textoMenssagemNaoCadastrado">Você não está cadastrado. Faça sua matriculo em no Senac e aproveite o uso do nosso aplicativo.</string>
+    <string name="perguntaUm">Qual o nome da sua primeira escola?</string>
+    <string name="textoBtnAlterar">ALTERAR</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="textoBloco">Bloco</string>
+    <string name="textoNotas">Notas</string>
+    <string name="textoFaltas">Faltas</string>
+    <string name="textoFaltasToleraveis">Faltas\nToleráveis</string>
+    <string name="textoCarga">Carga\nHorária</string>
+    <string name="TextoExemplo">Sou um desenvolvedor web com solida experiência no mercado.
+Atualmente dedico-me preferencialmente ao desenvolvimento
+back-end com PHP. Usando Wordpress ou Laravel,
+mas domino toda a area de front-end com javascript,
+node.js CSS/LESS etc.\n
+\n
+Formação\n
+\n
+Graduação em Tecnologo em Análise e Desenvolvimento de
+Sistemas - 02/2008 a 12/2009
+Faculdade Dimmond\n
+\n
+Ensino Medio - 01/1999 à 12/2001\n
+Colégio santo Antonio de Lisboa</string>
+
+
+</resources>

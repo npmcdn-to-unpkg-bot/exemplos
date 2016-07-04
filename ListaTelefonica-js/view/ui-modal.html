@@ -1,0 +1,23 @@
+<!-- Modal -->
+<div id="idDoModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title text-center">{{titulo}}</h4>
+			</div>
+			<div class="modal-body">
+				<p>{{contatoSelecionado.serial}}</p>
+				<p>{{contatoSelecionado.nome}}</p>
+				<p>{{contatoSelecionado.telefone}}</p>
+				<p>{{contatoSelecionado.operadora.nome | lowercase}}</p>
+				<p>{{contatoSelecionado.data | date:'dd/MM/yyyy HH:mm'}}</p>
+			</div>
+			<button type="button" class="btn btn-default" ng-click="fun(contatoSelecionado.id)">{{textoDoBotao}}</button>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

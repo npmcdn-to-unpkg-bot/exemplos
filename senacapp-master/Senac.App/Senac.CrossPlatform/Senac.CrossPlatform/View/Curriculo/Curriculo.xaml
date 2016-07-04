@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Senac.CrossPlatform.View.Curriculo.Curriculo">
+  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+  <ScrollView>
+    <StackLayout Orientation="Vertical" BackgroundColor="#cccccc" Padding="5">
+
+      <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="10" >
+        <Label Text="Curriculo" TextColor="#004080"/>
+        <StackLayout Orientation="Horizontal">
+        </StackLayout>
+      </StackLayout>
+
+      <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="10" >
+        <Label Text="Dados Pessoais" TextColor="#004080" />
+        <StackLayout Orientation="Horizontal">
+        </StackLayout>
+      </StackLayout>
+
+      <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="10">
+        <Label Text="Nome" TextColor="#004080"/>
+        <Picker x:Name="pkNome"/>
+      </StackLayout>
+
+      <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="10">
+        <Label Text="Telefone" TextColor="#004080"/>
+        <Picker x:Name="pkTelefone"/>
+      </StackLayout>
+
+      <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="10">
+        <Label Text="Celular" TextColor="#004080"/>
+        <Picker x:Name="pkCelular"/>
+      </StackLayout>
+
+      <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="10">
+        <Label Text="Empresa" TextColor="#004080"/>
+        <Picker x:Name="pkEmpresa"/>
+      </StackLayout>
+
+      <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="10">
+        <Label Text="Funçao" TextColor="#004080"/>
+        <Picker x:Name="pkFuncao"/>
+      </StackLayout>
+
+      <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="10">
+        <Label Text="Curso" TextColor="#004080"/>
+        <Picker x:Name="pkCurso"/>
+      </StackLayout>
+
+      <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="10">
+        <Label Text="Matricula" TextColor="#004080"/>
+        <Picker x:Name="pkNMatricula"/>
+      </StackLayout>
+
+      <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="10">
+        <Label Text="Final do curso" TextColor="#004080"/>
+        <Picker x:Name="pkTerminoCurso"/>
+      </StackLayout>
+
+      <StackLayout Orientation="Vertical" BackgroundColor="White" Padding="10">
+        <Label Text="Descrição do curso" TextColor="#004080"/>
+        <Picker x:Name="pkDescricaoCurso"/>
+      </StackLayout>
+
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

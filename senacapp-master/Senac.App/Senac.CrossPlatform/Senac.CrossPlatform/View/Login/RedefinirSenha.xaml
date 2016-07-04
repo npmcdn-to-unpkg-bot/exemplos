@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:senac="clr-namespace:Senac.CrossPlatform.Componentes;assembly=Senac.CrossPlatform"
+             x:Class="Senac.CrossPlatform.View.Login.RedefinirSenha"
+             Title=" Redefinição de senha"
+            BackgroundColor="White">
+
+  <StackLayout Orientation="Vertical" Spacing="0">
+
+
+
+    <StackLayout BackgroundColor="#253955" HeightRequest="200" Padding="20,0,20,10" Orientation="Vertical">
+      <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+        <Label Text="Redefinir sua senha" TextColor="White" FontSize="20" />
+      </StackLayout>
+    </StackLayout>
+    
+    <StackLayout Spacing="0" BackgroundColor="#FF7300" Padding="20,10,20,10">
+      <Label Text="Pergunta secreta" TextColor="White" FontAttributes="Bold"/>
+      <Entry Placeholder="Qual o nome da sua escola?" PlaceholderColor="White" FontAttributes="Bold" x:Name="txtPergunta" TextColor="White" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+    </StackLayout>
+
+
+    <StackLayout Spacing="10" Orientation="Vertical" Padding="20">
+      
+      
+      <Label Text="Alterar senha" TextColor="#253955" FontAttributes="Bold"/>
+      <StackLayout Spacing="-1">
+        <Entry x:Name="txtNovaSenha" IsPassword="true" TextColor="#253955" Placeholder="Nova senha" PlaceholderColor="Gray" Keyboard="Text" TextChanged="LimitaCaracteres"/>
+        <BoxView Color="Gray" WidthRequest="100" HeightRequest="1"/>
+      </StackLayout>
+      <StackLayout Spacing="-1">
+        <Entry x:Name="txtRepetirNovaSenha" IsPassword="true" TextColor="#253955" Placeholder="Repita a nova senha" PlaceholderColor="Gray" Keyboard="Text" TextChanged="LimitaCaracteres"/>
+        <BoxView Color="Gray" WidthRequest="100" HeightRequest="1"/>
+      </StackLayout>
+
+    </StackLayout>
+
+
+    <StackLayout BackgroundColor="#EEEEEF" VerticalOptions="EndAndExpand" >
+      <StackLayout Orientation="Horizontal" Padding="20,5,20,5">
+        <Button  BackgroundColor="Transparent" Text="Voltar" FontSize="20" TextColor="#253955" Clicked="VoltarLogin"  HorizontalOptions="StartAndExpand"/>
+        <ActivityIndicator  HorizontalOptions="CenterAndExpand" x:Name="indicador" />
+        <Button BackgroundColor="Transparent" Text="Salvar" FontSize="20" TextColor="#FF7300" Clicked="ValidarSenha" HorizontalOptions="EndAndExpand"/>
+      </StackLayout>
+    </StackLayout>
+
+
+
+  </StackLayout>
+</ContentPage>

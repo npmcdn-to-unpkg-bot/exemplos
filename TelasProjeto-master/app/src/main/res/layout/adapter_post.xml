@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:weightSum="4"
+    app:cardCornerRadius="2dp">
+
+    <!-- PAIZÃO -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <!--TOPO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgPerfilDonoPost"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@color/colorCinzaTexto"
+                    android:src="@drawable/perfil_icone"
+                    android:layout_gravity="center" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/mascara_foto" />
+            </FrameLayout>
+
+            <!-- AUTOR E DATA -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtNomeDonoPost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nomeCompleto"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorCinzaEscuro"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtDataPost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fevereiro 12, 2016"
+                    android:textColor="@color/colorCinzaTexto"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <!-- BOTAOZINHO CHATO LATERAL DIREITA -->
+            <ImageButton
+                android:id="@+id/btMenuPopup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#00ffffff"
+                android:src="@drawable/ic_keyboard_arrow_down" />
+        </LinearLayout>
+        <!-- LEGENDA FOTO OU CONTEÚDO POST -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/txtTituloPost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="TÍTULO ►"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtTextoPost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Texto"
+                android:textStyle="normal"
+                android:textColor="@color/colorCinzaEscuro" />
+
+        </LinearLayout>
+
+        <!-- IMAGEM POST -->
+        <ImageView
+            android:id="@+id/imgPost"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_gravity="center_horizontal" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorCinzaTexto" />
+
+        <!-- BUTTONS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.46"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp">
+
+                <Button
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_favorito_off"
+                    android:backgroundTint="@color/colorCinzaEscuro"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/txtContadorLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="6dp"
+                    android:inputType="number"
+                    android:text="25"
+                    android:textColor="@color/colorCinzaEscuro"
+                    android:textSize="18dp"
+                    android:layout_gravity="center_vertical" />
+
+                <Button
+                    android:id="@+id/abrirComentarios"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_comentario"
+                    android:backgroundTint="@color/colorCinzaEscuro"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    android:id="@+id/txtContadorComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="6dp"
+                    android:inputType="number"
+                    android:text="50"
+                    android:textColor="@color/colorCinzaEscuro"
+                    android:textSize="18dp"
+                    android:layout_gravity="center_vertical" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_compartilhar"
+                android:backgroundTint="@color/colorCinzaEscuro"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <!-- LINHA DE DIVISÃO -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorCinzaTexto" />
+
+        <!-- COMENTARIO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imgDonoUltimoComentario"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/colorCinzaTexto"
+                        android:src="@drawable/perfil_icone"
+                        android:layout_marginLeft="10dp" />
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/mascara_foto"
+                        android:layout_marginLeft="10dp" />
+                </FrameLayout>
+
+                <!-- Area de textos-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <!-- AUTOR -->
+                        <TextView
+                            android:id="@+id/txtNomeDonoUltimoComentario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nome Administrador"
+                            android:textSize="13dp"
+                            android:textColor="@color/colorCinzaEscuro"
+                            android:textStyle="bold" />
+
+                        <!-- DATA -->
+                        <TextView
+                            android:id="@+id/txtDataUltimoComentario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="► Fevereiro 12, 2016"
+                            android:textSize="10dp"
+                            android:textColor="@color/colorCinzaTexto" />
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/txtUltimoComentario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="13dp"
+                        android:text="Comentário que foi comentado por um comentador"
+                        android:layout_marginBottom="5dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

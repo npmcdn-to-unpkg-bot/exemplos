@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Senac.CrossPlatform.View.PaginaPrincipal.Cursos" BackgroundColor="White">
+
+             <ContentPage.Padding>
+   			 <OnPlatform x:TypeArguments="Thickness"
+                iOS="0, 20, 0, 0"
+                Android="0, 0, 0, 0"
+                WinPhone="0, 0, 0, 0" />
+  			  </ContentPage.Padding>
+
+  <ListView x:Name="listaCursos" HasUnevenRows="True"  Refreshing="AtualizarCursos" IsPullToRefreshEnabled="True" CachingStrategy="RecycleElement" ItemSelected="IrCursoAberto">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <Frame Padding="5,5,5,0">
+            <StackLayout Orientation="Vertical" BackgroundColor="White">
+              
+              <StackLayout Orientation="Horizontal" BackgroundColor="White">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="0">
+                  <Label Text="{Binding Nome}" TextColor="#315790" FontSize="12"/>
+                  <Label Text="{Binding TipoCurso}" TextColor="#D4782F" FontSize="10"/>
+                  <Label Text="{Binding Duracao}" TextColor="Silver" FontSize="10"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="5">
+                  <Button Image="ic_arrow_right.png" WidthRequest="40" BackgroundColor="Transparent" />
+                </StackLayout>
+              </StackLayout>
+              <BoxView Color="#9B9B9B" WidthRequest="100" HeightRequest="1"/>
+            </StackLayout>
+          </Frame>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+
+</ContentPage>

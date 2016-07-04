@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#004990</color>
+    <color name="colorPrimaryDark">#003866</color>
+    <color name="navegationBarColor">#003866</color>
+    <color name="colorAccent">#ff9e40</color>
+    <color name="colorBranco">#FFFFFF</color>
+    <color name="colorBrancoFundo">#EEEEEE</color>
+    <color name="colorCinzaTexto">#B2B2B2</color>
+    <color name="olocomeu">#ff44</color>
+    <color name="corFundoSplash">#05568d</color>
+    <color name="colorCinzaEscuro">#585858</color>
+    <color name="colorCinza">#dcdcdc</color>
+
+
+
+</resources>

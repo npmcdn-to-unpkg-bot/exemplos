@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+	<h:outputScript name="calendar.js" library="js" target="head" />
+	<ui:define name="content">
+		<h:form>
+			<h1>AutoComplete</h1>
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Valor: " />
+				<p:autoComplete value="#{primefacesBean.value}"
+					completeMethod="#{primefacesBean.completeMethod}"
+					minQueryLength="3" effect="fade" effectDuration="2000"
+					queryDelay="1000">
+				</p:autoComplete>
+
+				<p:outputLabel value="Valores: " />
+				<p:autoComplete value="#{primefacesBean.values}"
+					completeMethod="#{primefacesBean.completeMethod}"
+					minQueryLength="7" multiple="true">
+				</p:autoComplete>
+			</p:panelGrid>
+
+			<h1>Poll</h1>
+			<h:outputText id="placar"
+				value="#{primefacesBean.placarTimeA} X #{primefacesBean.placarTimeB}" />
+
+			<p:poll interval="1" listener="#{primefacesBean.update}"
+				update="placar" />
+
+			<h1>Calendar</h1>
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Data: " />
+				<p:calendar locale="pt_BR" mode="inline" />
+
+				<p:outputLabel value="Data: " />
+				<p:calendar locale="pt_BR" mode="slide" />
+
+				<p:outputLabel value="Data: " />
+				<p:calendar locale="pt_BR" mode="fold" />
+
+				<p:outputLabel value="Data: " />
+				<p:calendar locale="pt_BR" mode="slideDown" navigator="true" />
+			</p:panelGrid>
+
+			<h1>InputMask</h1>
+			<p:panelGrid columns="2">
+				<h:outputLabel value="Data: " />
+				<p:inputMask mask="99/99/9999" />
+
+				<h:outputLabel value="Telefone: " />
+				<p:inputMask mask="(99) 9999-9999?9" />
+
+				<h:outputLabel value="Código: " />
+				<p:inputMask mask="a*-99-*a" />
+
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

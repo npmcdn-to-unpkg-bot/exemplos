@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html ng-app="listaTelefonica">
+<head>
+	<title>Lista</title>
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+	<style>
+		.jumbotron {
+			width: 400px;
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 20px;
+			padding-right: 15px;
+			padding-left: 15px;
+		}
+
+		.form-control {
+			margin-bottom: 5px;
+		}
+	</style>
+	<script src="lib/angular/angular.min.js"></script>
+	<script>
+		angular.module("listaTelefonica", []);
+		
+		angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope) {
+			$scope.app = "Lista Telefonica";
+			$scope.lista = [
+			{nome: 'Antonio', telefone: 98989090, cor: {nome: 'Vermelho', cor: 'red'}},
+			{nome: 'Naoki', telefone: 66553344, cor: {nome: 'Verde', cor: 'green'}},
+			{nome: 'Luis', telefone: 98787623, cor: {nome: 'Rosa', cor: 'pink'}}
+			];
+
+			$scope.operadoras = [
+			{nome: 'Vivo', codigo: 10, categoria: 'Celular'},
+			{nome: 'Oi', codigo: 11, categoria: 'Celular'},
+			{nome: 'Tim', codigo: 12, categoria: 'Celular'},
+			{nome: 'GVT', codigo: 13, categoria: 'Fixo'},
+			{nome: 'Embratel', codigo: 14, categoria: 'Fixo'}
+			];
+
+			$scope.cores = [
+			{nome: 'Azul', cor: 'blue'},
+			{nome: 'Verde', cor: 'green'},
+			{nome: 'Vermelho', cor: 'red'},
+			{nome: 'Amarelo', cor: 'yellow'},
+			{nome: 'Rosa', cor: 'pink'}
+			];
+
+			$scope.adicionar = function (contato) {
+				$scope.lista.push(angular.copy(contato));
+				delete $scope.contato
+			};
+
+			$scope.deletarSelecionados = function (listaContatos) {
+				$scope.lista = listaContatos.filter(function (item) {
+					if (!item.selecionado) return item;
+				});
+			};
+
+			$scope.isItemSelecionado = function (contatos) {
+				return contatos.some(function (c) {
+					return c.selecionado;
+				});
+			}
+		});
+
+	</script>
+</head>
+<body>
+	<div ng-controller="listaTelefonicaCtrl">
+		<div class="jumbotron">
+			<h3>{{app}}</h3>
+			{{contato}}
+			<table class="table table-striped" ng-show="lista.length > 0">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Nome</th>
+						<th>Telefone</th>
+						<th>Operadora</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tr ng-repeat="item in lista" ng-class="{danger: item.selecionado}">
+					<td><input type="checkbox" ng-model="item.selecionado"></td>
+					<td>{{item.nome}}</td>
+					<td>{{item.telefone}}</td>
+					<td>{{item.operadora.nome}}</td>
+					<td><div style="width: 20px; height: 20px;" ng-style="{'background-color': item.cor.cor}"></div></td>
+				</tr>
+			</table>
+			<form>
+				<input class="form-control" placeholder="Nome" type="text" ng-model="contato.nome">
+				<input class="form-control" placeholder="Telefone" type="text" ng-model="contato.telefone">
+
+				<select class="form-control" ng-model="contato.operadora" ng-options="i.nome group by i.categoria for i in operadoras">
+					<option value="">Selecione uma operadora</option>
+				</select>
+
+				<select class="form-control" ng-model="contato.cor" ng-options="i.nome group by i.categoria for i in cores">
+					<option value="">Selecione uma cor</option>
+				</select>
+
+				<button class="btn btn-primary btn-block" ng-click="adicionar(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar</button>
+
+				<button class="btn btn-danger btn-block" ng-click="deletarSelecionados(lista)" ng-if="isItemSelecionado(lista)">Apagar contatos</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

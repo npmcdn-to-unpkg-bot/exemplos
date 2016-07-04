@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_paginaIncial"
+            android:icon="@drawable/ic_storage_black"
+            android:title="@string/paginaIncial" />
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/ic_person_black"
+            android:title="@string/perfil" />
+        <item
+            android:id="@+id/nav_sobre"
+            android:icon="@drawable/ic_assignment_ind_black"
+            android:title="@string/sobre" />
+        <item
+            android:id="@+id/nav_minhas_publicacoes"
+            android:icon="@drawable/ic_dns_black"
+            android:title="@string/minhasPublicacoes" />
+
+        <item
+            android:id="@+id/nav_cursos"
+            android:title="Cursos">
+
+            <menu>
+                <item
+                    android:id="@+id/nav_curso_01"
+                    android:icon="@drawable/ic_folder_black"
+                    android:title="Curso 01" />
+                <item
+                    android:id="@+id/nav_curso_02"
+                    android:icon="@drawable/ic_folder_black"
+                    android:title="Curso 02" />
+            </menu>
+        </item>
+    </group>
+
+    <item android:title="  ">
+        <menu>
+            <item
+                android:id="@+id/nav_Logout"
+                android:icon="@drawable/ic_cancel"
+                android:title="Logout" />
+
+        </menu>
+    </item>
+
+</menu>

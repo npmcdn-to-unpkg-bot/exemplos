@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:senac="clr-namespace:Senac.CrossPlatform.Componentes;assembly=Senac.CrossPlatform"
+             x:Class="Senac.CrossPlatform.View.Login.LoginInicial"
+             BackgroundColor="White">
+
+<StackLayout Orientation="Vertical" Spacing="0">
+    
+    
+    
+    <StackLayout BackgroundColor="#253955" HeightRequest="200" Padding="20,0,0,10" Orientation="Vertical">
+      <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+      <Label Text="Verificar seu CPF" TextColor="White" FontSize="20" />
+      </StackLayout>
+    </StackLayout>
+    
+       
+    <StackLayout Spacing="20" Orientation="Vertical" Padding="20">
+      <Image x:Name="imgSenac" Source="senac_splash" WidthRequest="100" HorizontalOptions="StartAndExpand"/>
+    
+      <Label Text="Adicione seu CPF para que possamos verificar se você está matriculado." TextColor="Gray"/>
+    
+      <StackLayout Spacing="-1">
+      <Entry x:Name="txtCpf" TextColor="#253955" Placeholder="Insira seu cpf" PlaceholderColor="Gray" Keyboard="Numeric" TextChanged="ValidarCpf"/>
+      <BoxView Color="Gray" WidthRequest="100" HeightRequest="1"/>
+        
+          <StackLayout x:Name="erroBranco" IsVisible="False" BackgroundColor="Gray" Padding="5" VerticalOptions="EndAndExpand">
+              <Label Text="CPF não pode ser branco." VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" />
+          </StackLayout>
+        
+      <StackLayout x:Name="erroInvalido" IsVisible="False" BackgroundColor="Red" Padding="5" VerticalOptions="EndAndExpand">
+              <Label Text="Digite um CPF válido" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" />
+          </StackLayout>
+      
+       <StackLayout x:Name="lblErro" IsVisible="False" BackgroundColor="#FF7300" Padding="5" VerticalOptions="EndAndExpand">
+          <Label Text="Você não está matriculado." VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="White" FontSize="15" />
+        </StackLayout>
+      </StackLayout>
+      
+      
+    
+      <Button Text="Ou matricule-se" TextColor="Blue" FontAttributes="None" Clicked="RedirecionaSite" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand"/>
+      
+    </StackLayout>
+    
+     <StackLayout x:Name="slErroCpf" VerticalOptions="EndAndExpand" IsVisible="False">
+      <Label x:Name="lblErroCpf" Text="O campo precisa ser preenchido." HorizontalOptions="Center" TextColor="Red" FontSize="10" ></Label>
+    </StackLayout>
+
+    <StackLayout x:Name="lblProximo" VerticalOptions="EndAndExpand" >
+      <Label Text="Digite seu cpf para prosseguir." HorizontalOptions="Center" TextColor="Gray" FontSize="10" IsVisible="False"></Label>
+    </StackLayout>
+
+    <StackLayout x:Name="lblTxt" VerticalOptions="EndAndExpand" >
+      <Label x:Name="texto" HorizontalOptions="Center" TextColor="White" FontSize="10" IsVisible="False"></Label>
+    </StackLayout>   
+     
+      
+    <StackLayout BackgroundColor="#EEEEEF" VerticalOptions="EndAndExpand" IsVisible="True" x:Name="btnAvancar">
+      <StackLayout Orientation="Horizontal" Padding="20,5,20,5">
+        <Button BackgroundColor="Transparent" Text="Avançar" TextColor="#253955" Clicked="ProcurarUsuario" HorizontalOptions="EndAndExpand" FontSize="20"/>
+      </StackLayout>
+    </StackLayout>
+  
+  <StackLayout BackgroundColor="#253955" VerticalOptions="EndAndExpand" IsVisible="False" x:Name="txtCarregando">
+      <StackLayout Orientation="Horizontal" Padding="20,5,20,5">
+        <ActivityIndicator  HorizontalOptions="StartAndExpand" x:Name="indicador" />
+      <Button BackgroundColor="Transparent" Text="...Verificando" TextColor="#EEEEEF" HorizontalOptions="EndAndExpand" FontSize="20" FontAttributes="None"/>
+      </StackLayout>
+    </StackLayout>
+    
+    
+
+  </StackLayout>
+  
+
+</ContentPage>

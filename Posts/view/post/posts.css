@@ -1,0 +1,42 @@
+.jumbotron {
+	background-color: #ffffff;
+	margin-right: auto;
+	margin-left: auto;
+	width: 798px;
+}
+
+.container-fluid{
+	width: 400px;	
+}
+
+.form-control {
+	margin-bottom: 10px;
+}
+
+.img {
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 20px;
+	width: 400px;
+	height: 400px;
+}
+
+.texto {
+	color: #868685;
+}
+
+.titulo {
+	color: gray;
+}
+
+.nome-sobrenome{
+	color: #4E616F;
+}
+
+#header {
+	background-color: #545454;
+	height: 40px;
+	color: #fff;
+	padding: 5px;
+	box-shadow: 0px 2px 2px #ccc
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/template/template.xhtml">
+	<f:metadata>
+		<f:viewAction action="#{estatisticaBean.init}" />
+	</f:metadata>
+
+	<ui:define name="content">
+		<h:form style="text-align: center">
+			<p:messages id="m" showDetail="false" />
+			<p:commandButton action="#{estatisticaBean.salvar}" value="Sair"
+				update="m" />
+
+			<h1></h1>
+			<p:panelGrid columns="6">
+				<h:outputText value="Total de atendimentos" />
+				<h:outputText value="Porcentagem de atendidos" />
+				<h:outputText value="Porcentagem de cancelados" />
+				<h:outputText value="Média tempo de espera" />
+				<h:outputText value="Média tempo de atendimento" />
+				<h:outputText value="Média tempo de cancelamento" />
+
+				<h:outputText
+					value="#{estatisticaBean.atendimentosEstatistica.total}">
+					<f:convertNumber type="number" />
+				</h:outputText>
+
+				<h:outputText
+					value="#{estatisticaBean.atendimentosEstatistica.porcentagemAtendidos}">
+					<f:convertNumber type="percent" />
+				</h:outputText>
+
+				<h:outputText
+					value="#{estatisticaBean.atendimentosEstatistica.porcentagemCancelados}">
+					<f:convertNumber type="percent" />
+				</h:outputText>
+
+				<h:outputText
+					value="#{estatisticaBean.atendimentosEstatistica.mediaTempoEspera}" />
+
+				<h:outputText
+					value="#{estatisticaBean.atendimentosEstatistica.mediaTempoAtendimento}" />
+
+				<h:outputText
+					value="#{estatisticaBean.atendimentosEstatistica.mediaTempoCancelamento}" />
+			</p:panelGrid>
+
+			<div style="height: 10px" />
+
+			<p:dataTable value="#{estatisticaBean.estatisticaClientesAtendidos}"
+				var="item">
+				<f:facet name="header">Atendimentos com clientes atendidos</f:facet>
+
+				<p:column headerText="Número" style="width: 100px">
+					<h:outputText value="#{item.numeroAtendimento}" />
+				</p:column>
+				<p:column headerText="Cliente">
+					<h:outputText value="#{item.cliente.nome}" />
+				</p:column>
+
+				<p:column headerText="Chegada" style="width: 100px">
+					<h:outputText value="#{item.horaChegada.time}">
+						<f:convertDateTime pattern="HH:mm:ss" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Atendimento" style="width: 100px">
+					<h:outputText value="#{item.horaAtendimento.time}">
+						<f:convertDateTime pattern="HH:mm:ss" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Saida" style="width: 100px">
+					<h:outputText value="#{item.horaSaida.time}">
+						<f:convertDateTime pattern="HH:mm:ss" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Tempo de espera">
+					<h:outputText value="#{item.tempoEspera}" />
+				</p:column>
+				<p:column headerText="Tempo de Permanencia">
+					<h:outputText value="#{item.tempoPermacencia}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+		<div style="height: 10px" />
+
+		<h:form style="text-align: center">
+			<p:dataTable value="#{estatisticaBean.estatisticaClientesCancelados}"
+				var="item">
+				<f:facet name="header">Atendimentos com clientes cancelados</f:facet>
+
+				<p:column headerText="Número" style="width: 100px">
+					<h:outputText value="#{item.numeroAtendimento}" />
+				</p:column>
+				<p:column headerText="Cliente">
+					<h:outputText value="#{item.cliente.nome}" />
+				</p:column>
+
+				<p:column headerText="Chegada" style="width: 100px">
+					<h:outputText value="#{item.horaChegada.time}">
+						<f:convertDateTime pattern="HH:mm:ss" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Saida" style="width: 100px">
+					<h:outputText value="#{item.horaSaida.time}">
+						<f:convertDateTime pattern="HH:mm:ss" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Tempo de Permanencia">
+					<h:outputText value="#{item.tempoPermacencia}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

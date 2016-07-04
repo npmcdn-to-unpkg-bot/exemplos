@@ -1,0 +1,353 @@
+
+package Visual;
+import DAL.ConectaBd;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
+public class FormCadMesa extends javax.swing.JInternalFrame {
+    
+    
+    Connection conecta;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+
+    public FormCadMesa() throws ClassNotFoundException {
+        initComponents();
+        this.setLocation(50,120);
+        conecta = ConectaBd.conectabd();
+        listarMesa();
+        this.populajCombobox();
+    }
+    
+    public void populajCombobox(){
+        
+        String sql = "Select *from situacao";
+        
+        try{
+            pst = conecta.prepareStatement(sql);           
+            rs = pst.executeQuery();
+            
+            while(rs.next()){
+                
+                cmbSituacao.addItem(rs.getString("desc_situacao"));
+                
+            }
+            
+        }
+        
+        catch(SQLException error){
+            JOptionPane.showMessageDialog(null, error);
+        }
+        
+    }
+    
+    public void listarMesa(){
+        
+        String sql = "Select *from mesa";
+        
+        try{
+            pst = conecta.prepareStatement(sql);
+            rs = pst.executeQuery();
+            tblMesa.setModel(DbUtils.resultSetToTableModel(rs));
+            
+        }
+        
+        catch(SQLException error){
+            JOptionPane.showMessageDialog(null, error);
+        }
+    }
+
+    public void cadastrarMesa(){
+        
+        String sql = "insert into mesa values(?,?,?)";
+        
+        try{
+            
+            pst = conecta.prepareStatement(sql);
+            pst.setString(1, txtID_Mesa.getText());
+            pst.setString(2, txtDesc_Mesa.getText());
+            //pst.setString(3, cmbSituacao.getText());
+            
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+            listarMesa();
+        }
+        
+        catch(SQLException error){
+            JOptionPane.showMessageDialog(null, error); 
+        }
+    }
+    
+    public void pesquisarMesa(){
+        
+        String sql = "Select *from mesa where nome like ?";
+        
+        try{
+            pst = conecta.prepareStatement(sql);
+            pst.setString(1, txtPesquisar.getText()+"%");
+            rs = pst.executeQuery();
+            tblMesa.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        
+        catch(SQLException error){
+            JOptionPane.showMessageDialog(null, error);
+        }
+    }
+    
+    public void mostrarItens(){
+        
+        int seleciona = tblMesa.getSelectedRow();
+        txtDesc_Mesa.setText(tblMesa.getModel().getValueAt(seleciona,9).toString());
+        //txtNascimento.setText(tblCliente.getModel().getValueAt(seleciona,0).toString());
+        //txtNome.setText(tblCliente.getModel().getValueAt(seleciona,1).toString());
+        //txtEndereco.setText(tblCliente.getModel().getValueAt(seleciona,2).toString());
+        //txtBairro.setText(tblCliente.getModel().getValueAt(seleciona,3).toString());
+        //txtCEP.setText(tblCliente.getModel().getValueAt(seleciona,4).toString());
+        //txtCidade.setText(tblCliente.getModel().getValueAt(seleciona,5).toString());
+        //txtEstado.setText(tblCliente.getModel().getValueAt(seleciona,6).toString());
+    }
+    
+    public void editarMesa(){
+            
+            String sql = "Update mesa set desc_mesa = ? where id_mesa = ? ";
+            
+            try{
+                
+                pst = conecta.prepareStatement(sql);
+                pst.setString(1, txtDesc_Mesa.getText());
+                //pst.setString(2, txtNome.getText());
+                //pst.setString(3, txtEndereco.getText());
+                //pst.setString(4, txtBairro.getText());
+                //pst.setString(5, txtCEP.getText());
+                //pst.setString(6, txtCidade.getText());
+                //pst.setString(7, txtEstado.getText());
+                //pst.setInt(10, Integer.parseInt(txtCPF.getText()));
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null,"Cadastro Atualizado com sucesso!");
+                listarMesa();
+            }
+            
+            catch(SQLException error){
+                
+                JOptionPane.showMessageDialog(null, error);
+                
+            }
+    }
+    public void limparCampos(){
+        
+        txtDesc_Mesa.setText("");
+        //txtNascimento.setText("");
+        //txtNome.setText("");
+        //txtEndereco.setText("");
+        //txtBairro.setText("");
+        //txtCEP.setText("");
+        //txtCidade.setText("");
+        //txtEstado.setText("");
+        
+        
+    }
+            
+            
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblMesa = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        txtPesquisar = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtDesc_Mesa = new javax.swing.JTextField();
+        txtID_Mesa = new javax.swing.JTextField();
+        cmbSituacao = new javax.swing.JComboBox<>();
+
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Cadastro de Mesas");
+
+        tblMesa.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblMesa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMesaMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblMesa);
+
+        jLabel1.setText("N° Mesa:");
+
+        jLabel6.setText("Descrição:");
+
+        jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Editar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Limpar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        txtPesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesquisarKeyReleased(evt);
+            }
+        });
+
+        jLabel11.setText("Buscar");
+
+        txtID_Mesa.setEditable(false);
+        txtID_Mesa.setBackground(new java.awt.Color(204, 204, 204));
+
+        cmbSituacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtID_Mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtDesc_Mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(73, 73, 73)
+                                .addComponent(cmbSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel11))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jButton1)
+                        .addGap(137, 137, 137)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 25, Short.MAX_VALUE))
+        );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton4});
+
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtID_Mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel6)
+                        .addComponent(txtDesc_Mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton4))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton4});
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        cadastrarMesa();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtPesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisarKeyReleased
+        
+        pesquisarMesa();
+        
+    }//GEN-LAST:event_txtPesquisarKeyReleased
+
+    private void tblMesaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMesaMouseClicked
+        
+        mostrarItens();
+        
+    }//GEN-LAST:event_tblMesaMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        limparCampos();
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        editarMesa();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbSituacao;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblMesa;
+    private javax.swing.JTextField txtDesc_Mesa;
+    private javax.swing.JTextField txtID_Mesa;
+    private javax.swing.JTextField txtPesquisar;
+    // End of variables declaration//GEN-END:variables
+}

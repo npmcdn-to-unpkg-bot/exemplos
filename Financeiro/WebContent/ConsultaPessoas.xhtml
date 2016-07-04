@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/template/layout.xhtml">
+	<ui:define name="titulo">
+		Consulta Pessoas
+	</ui:define>
+	<ui:define name="corpo">
+		<h1>Consulta de lançamentos</h1>
+
+		<h:form id="form">
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+
+			<p:dataTable value="#{consultaPessoaBean.pessoas}" var="item"
+				paginator="true" rows="5" paginatorPosition="bottom">
+				<p:column headerText="Id">
+					<h:outputText value="#{item.id}" />
+				</p:column>
+
+				<p:column headerText="Nome" style="text-align: center">
+					<h:outputText value="#{item.nome}" />
+				</p:column>
+
+				<p:column>
+					<p:button icon="ui-icon-pencil" title="Editar"
+						outcome="/CadastroPessoas.xhtml">
+						<f:param name="id" value="#{item.id}" />
+					</p:button>
+				</p:column>
+
+				<p:column>
+					<p:commandButton icon="ui-icon-trash" value="Excluir"
+						action="#{consultaPessoaBean.remover}" update="@form">
+						<f:setPropertyActionListener value="#{item}"
+							target="#{consultaPessoaBean.pessoaSelecionada}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

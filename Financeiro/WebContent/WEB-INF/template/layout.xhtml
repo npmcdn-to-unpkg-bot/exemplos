@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title><ui:insert name="titulo">Sistema Financeiro</ui:insert></title>
+	<h:outputStylesheet library="algaworks" name="estilo.css" />
+</h:head>
+
+<h:body>
+	<header> <p:graphicImage id="img" library="algaworks"
+		name="logo.png" />
+	<div style="float: right; margin-right: 20px; margin-top: 8px">Olá
+		#{usuario.nome}</div>
+	</header>
+
+	<h:form>
+		<p:menubar>
+			<p:submenu label="Cadastros">
+				<p:menuitem value="Pessoas"
+					action="/CadastroPessoas.xhtml?faces-redirect=true" />
+				<p:menuitem value="Lançamentos"
+					action="/formularioCadastro.xhtml?faces-redirect=true" />
+			</p:submenu>
+			<p:submenu label="Consultas">
+				<p:menuitem value="Pessoas"
+					action="/ConsultaPessoas.xhtml?faces-redirect=true" />
+				<p:menuitem value="Lançamentos"
+					action="/ConsultaLancamentos.xhtml?faces-redirect=true" />
+			</p:submenu>
+			<p:submenu label="Sistema">
+				<p:menuitem value="Sair" action="#{loginBean.logout}" />
+			</p:submenu>
+		</p:menubar>
+	</h:form>
+
+	<div id="conteudo">
+		<ui:insert name="corpo" />
+	</div>
+
+	<footer>Sistema Financeiro - Algaworks</footer>
+
+	<p:ajaxStatus styleClass="ajax-status">
+		<f:facet name="start">
+			<h:graphicImage library="algaworks" name="loading.gif" />
+		</f:facet>
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+</h:body>
+</html>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:senac="clr-namespace:Senac.CrossPlatform.Componentes;assembly=Senac.CrossPlatform"
+             x:Class="Senac.CrossPlatform.View.PaginaPrincipal.NovoPost" 
+              BackgroundColor="White">
+
+         <ContentPage.Padding>
+   			 <OnPlatform x:TypeArguments="Thickness"
+                iOS="0, 20, 0, 0"
+                Android="0, 0, 0, 0"
+                WinPhone="0, 0, 0, 0" />
+  		</ContentPage.Padding>
+
+
+  <ScrollView>
+  <StackLayout Orientation="Vertical" Spacing="0">
+    <StackLayout BackgroundColor="White" Orientation="Vertical" Spacing="0" >
+      <senac:SenacImage x:Name="imgPost" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5" />
+      
+      <StackLayout BackgroundColor="#EEEEEF" VerticalOptions="EndAndExpand">
+        <StackLayout Orientation="Horizontal" Padding="20,10,20,5" >
+          <Button x:Name="addImagem" BackgroundColor="Transparent" Text="Imagem" TextColor="#253955" HorizontalOptions="FillAndExpand" FontSize="20" Clicked="FotoPost" IsVisible="True"/>
+          <Button x:Name="alterarImagem" BackgroundColor="Transparent" Text="Alterar" TextColor="#253955" HorizontalOptions="FillAndExpand" FontSize="20" Clicked="FotoPost" IsVisible="False"/>
+          <Button x:Name="removerImagem" BackgroundColor="Transparent" Text="Remover" TextColor="Red" HorizontalOptions="FillAndExpand" FontSize="20" Clicked="ExcluirFoto" IsVisible="False"/>
+        </StackLayout>
+
+      </StackLayout>
+      
+    </StackLayout>
+    
+    <StackLayout Padding="20,10,20,10" Spacing="0" BackgroundColor="White" IsVisible="True" x:Name="normalPreenchimento">
+
+      <!--TITULO-->
+      <Label Text="Titulo " TextColor="#315790" FontAttributes="Bold" FontSize="15" />
+      <Entry Placeholder="Titulo do post" TextColor="#315790" PlaceholderColor="Silver"  x:Name="edtTitulo"  Keyboard="Text" HorizontalOptions="FillAndExpand"/>
+      <!--LINHA PARA SEPARAR-->
+
+      <BoxView Color="#315790" WidthRequest="100" HeightRequest="1"/>
+      <BoxView Color="Transparent" WidthRequest="100" HeightRequest="15"/>
+
+      <!--TEXTO-->
+      <Label Text="Texto " TextColor="#315790" FontAttributes="Bold" FontSize="15" />
+      
+      <StackLayout Orientation="Vertical" Spacing="0" >
+        <BoxView Color="#315790" WidthRequest="100" HeightRequest="1"/>
+        <StackLayout Orientation="Horizontal">
+          <BoxView Color="#315790" WidthRequest="1" HeightRequest="200"/>
+          <Editor TextColor="#315790" x:Name="edtTexto"  Keyboard="Text" VerticalOptions="StartAndExpand" HeightRequest="250" WidthRequest="300"/>
+          <BoxView Color="#315790" WidthRequest="1" HeightRequest="200" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+        <BoxView Color="#315790" WidthRequest="100" HeightRequest="1"/>
+      </StackLayout>
+
+      <!-- <BoxView Color="Transparent" WidthRequest="100" HeightRequest="15"/>
+        <Button  Text="Área" TextColor="#315790" BackgroundColor="Transparent" Clicked="areaPost" VerticalOptions="Start" BorderColor="#315790" BorderWidth="1"/>
+
+        <BoxView Color="Transparent" WidthRequest="100" HeightRequest="15"/>
+        <Button  Text="Unidade"  TextColor="#315790" BackgroundColor="Transparent" Clicked="unidadePost" VerticalOptions="Start" BorderColor="#315790" BorderWidth="1"/>
+
+        <BoxView Color="Transparent" WidthRequest="100" HeightRequest="15"/>
+        <Button  Text="Cidade" TextColor="#315790" BackgroundColor="Transparent" Clicked="cidadePost" VerticalOptions="Start" BorderColor="#315790" BorderWidth="1"/>-->
+
+    </StackLayout>
+
+    <StackLayout Padding="20,10,20,10" Spacing="0" BackgroundColor="White" IsVisible="False" x:Name="segundoAlertaPreencher">
+
+      <!--TITULO-->
+      <Label Text="Titulo " TextColor="#FF7300" FontAttributes="Bold" FontSize="15" />
+      <Entry Placeholder="Titulo do post" TextColor="#FF7300" PlaceholderColor="Silver"  Keyboard="Text" HorizontalOptions="FillAndExpand"/>
+      <!--LINHA PARA SEPARAR-->
+
+      <BoxView Color="#FF7300" WidthRequest="100" HeightRequest="1"/>
+      <BoxView Color="Transparent" WidthRequest="100" HeightRequest="15"/>
+
+      <!--TEXTO-->
+      <Label Text="Texto " TextColor="#FF7300" FontAttributes="Bold" FontSize="15" />
+      
+      <StackLayout Orientation="Vertical" Spacing="0,10,0,0" >
+        <BoxView Color="#FF7300" WidthRequest="100" HeightRequest="1"/>
+        <StackLayout Orientation="Horizontal">
+          <!--<BoxView Color="#FF7300" WidthRequest="1" HeightRequest="200"/>-->
+          <Editor TextColor="#FF7300" Keyboard="Text" VerticalOptions="StartAndExpand" HeightRequest="250" WidthRequest="300"/>
+          <!--<BoxView Color="#FF7300" WidthRequest="1" HeightRequest="200" HorizontalOptions="EndAndExpand"/>-->
+        </StackLayout>
+        <BoxView Color="#FF7300" WidthRequest="100" HeightRequest="1"/>
+      </StackLayout>
+
+    </StackLayout>
+    
+    <StackLayout BackgroundColor="#EEEEEF" VerticalOptions="EndAndExpand" x:Name="btnSalvar" IsVisible="True" >
+      <StackLayout Orientation="Horizontal" Padding="20,5,20,5" >
+        <Button  BackgroundColor="Transparent" Text="Publicar" TextColor="#253955" HorizontalOptions="EndAndExpand" FontSize="20" Clicked="InserirPost" />
+      </StackLayout>
+    </StackLayout>
+
+    <StackLayout BackgroundColor="#253955" VerticalOptions="EndAndExpand" x:Name="alertaPostado" IsVisible="False" >
+      <StackLayout Orientation="Horizontal" Padding="20,5,20,5" >
+        <Label Text="Publicação inserida com sucesso!" TextColor="White" VerticalTextAlignment="Center" FontSize="15"/>
+        <Button  BackgroundColor="Transparent" Text="ok" TextColor="White" Clicked="OkPostado" HorizontalOptions="EndAndExpand" FontSize="20"/>
+      </StackLayout>
+    </StackLayout>
+
+    <StackLayout BackgroundColor="#EEEEEF" VerticalOptions="EndAndExpand" x:Name="alertaPreencher" IsVisible="False" >
+      <StackLayout Orientation="Horizontal" Padding="20,5,20,5" >
+        <Label Text="Para publicar você deve preencher os campos em destaque." TextColor="#FF7300" VerticalTextAlignment="Center" FontSize="15"/>
+        <Button  BackgroundColor="Transparent" Text="ok" TextColor="#FF7300" Clicked="OkAlerta" HorizontalOptions="EndAndExpand" FontSize="20"/>
+      </StackLayout>
+    </StackLayout>
+    
+
+
+
+
+
+  </StackLayout>
+  </ScrollView>
+</ContentPage>

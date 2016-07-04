@@ -1,0 +1,55 @@
+<div class="jumbotron">
+<button ng-click="voltar()" class="btn btn-default"><span class="glyphicon"></span>Voltar</button>
+	<div class="row">
+		<div class="col-md-11">
+			<span>{{postAberto.usuario.nome}}</span>
+		</div>
+		<div class="col-md-1">
+			{{postAberto.dataDaPostagem | date:'HH:mm'}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10">
+			<h2 class="titulo">{{postAberto.titulo}}</h2>
+			<p class="texto">{{postAberto.texto}}</p>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+	<div class="img">
+		<img class="img img-thumbnail" data-ng-src="data:image/png;base64,{{postAberto.imagem}}" data-err-src="http://revistaicone.com/home/wp-content/themes/icone2013/scripts/timthumb.php?src=http://revistaicone.com/home/wp-content/uploads/2013/06/logo-senac-292x242.jpg&w=292&h=242"/>
+	</div>
+	<div>
+		<table class="table">
+			<tr ng-repeat="comentario in comentarios">
+				<td>
+					<div class="row">
+						<div class="col-md-11">
+							<span>{{comentario.usuario.nome}}</span>
+						</div>
+						<div class="col-md-1">
+							{{comentario.dataDoComentario | date:'HH:mm'}}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-10">
+							<span>{{comentario.texto}}</span>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		{{comentario}}
+		<form>
+			<div class="row">
+				<div class="col-md-11">
+					<input type="text" class="form-control" ng-model="comentario.texto">
+				</div>
+				<div class="col-md-1">
+					<button class="btn btn-default" ng-click="inserirComentario(comentario)"><span class="glyphicon glyphicon-ok"></span></button>
+				</div>
+			</div>
+		</form>
+	</div>	
+
+</div>
